@@ -14,7 +14,7 @@ function Version() {
     try {
       const lastVersion = await ApiVersion.getLastVersion();
       if (lastVersion && lastVersion !== version) {
-        const [oldV1, oldV2, oldV3] = version.split('.').map(v => parseInt(v));
+        const [oldV1, oldV2, oldV3] = version.split('.').map((v: string) => parseInt(v));
         const [newV1, newV2, newV3] = lastVersion.split('.').map(v => parseInt(v));
 
         let isSetNewVersion = false;

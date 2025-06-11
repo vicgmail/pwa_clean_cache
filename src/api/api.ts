@@ -6,22 +6,18 @@ export class Api {
   }
 
   static async request<T>(method: string, url: string, data: object, params: object, options: object): Promise<T> {
-    try {
-      const result = await axios({
-        method,
-        url,
-        data,
-        params,
-        ...options,
-      });
+    const result = await axios({
+      method,
+      url,
+      data,
+      params,
+      ...options,
+    });
 
-      if ([200, 201].includes(result.status)) {
-        return result.data;
-      }
-
-      return result;
-    } catch (error) {
-      throw error;
+    if ([200, 201].includes(result.status)) {
+      return result.data;
     }
+
+    throw result;
   }
 }
