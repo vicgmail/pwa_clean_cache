@@ -14,4 +14,5 @@ export const updateServiceWorkerRegistration = async () => {
     console.log('UPDATE reg:', reg);
     reg.update();
   }
+  window.location.reload();
 }
