@@ -2,13 +2,16 @@ require('dotenv/config');
 const fs = require('fs');
 const path = require('path');
 
-const filePath = path.resolve(__dirname, '../dist/index.html');
-let html = fs.readFileSync(filePath, 'utf8');
+const files = [
+  '../dist/index.html',
+  '../dist/service-worker.js'
+];
 
-// Replace placeholder
-html = html.replace('__CACHE_KEY__', `CACHE_${process.env.VITE_APP_VERSION}`);
+for (const filename of files) {
+  const filePath = path.resolve(__dirname, filename);
+  let file = fs.readFileSync(filePath, 'utf8');
+  file = file.replace('__CACHE_KEY__', `CACHE_${process.env.VITE_APP_VERSION}`);
+  fs.writeFileSync(filePath, file);
 
-// Write back to file
-fs.writeFileSync(filePath, html);
-
-console.log('index.html was modified successfully.');
+  console.log(`${filePath} was modified successfully.`);
+}

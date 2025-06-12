@@ -10,8 +10,29 @@
     var CACHE_KEY = "__CACHE_KEY__";
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(reg => console.log('Service Worker registered'))
+        navigator.serviceWorker.register(`/service-worker.js?v=${CACHE_KEY}`)
+          .then(registration => {
+            console.log('Service Worker registered');
+
+
+            registration.onupdatefound = () => {
+              alert('onupdatefound');
+
+              console.log('registration:', registration);
+
+            const newWorker = registration.installing;
+              if (newWorker) {
+                newWorker.onstatechange = () => {
+                  if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                    // New update available!
+                    alert('New update available, skipWaiting');
+                    newWorker.postMessage({ action: 'skipWaiting' });
+                  }
+                };
+              }
+            };
+            
+          })
           .catch(err => console.error('Service Worker registration failed:', err));
       });
     }
