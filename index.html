@@ -7,6 +7,7 @@
     <title>PWA</title>
     <link rel="manifest" href="/manifest.json" />
     <script>
+    var CACHE_KEY = "__CACHE_KEY__";
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('/service-worker.js')
