@@ -14,6 +14,7 @@ function Version() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const getLastVersion = async () => {
+    setIsNewTomorrow(false);
     setIsLoading(true);
     setErrorMessage('');
     try {
