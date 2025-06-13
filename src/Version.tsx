@@ -68,6 +68,9 @@ function Version() {
     if (isSetNewVersion) {
       setNewVersion(lastVersion);
     }
+    else {
+      setIsNewTomorrow(true);
+    }
   }
 
   const updateVersion = async () => {
