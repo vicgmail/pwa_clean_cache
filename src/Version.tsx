@@ -20,7 +20,7 @@ function Version() {
     try {
       return await ApiVersion.getLastVersion();
     } catch (error) {
-      setErrorMessage('Server is not reached. Please try again after 30 seconds.');
+      setErrorMessage('Server is not reached. We are building an instance for you. Please try again after 60 seconds.');
       console.error(error);
       return '';
     }
