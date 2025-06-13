@@ -10,7 +10,7 @@ const files = [
 (async () => {
   let APP_VERSION;
   try {
-    const urlVersion = `${process.env.VITE_API_VERSION_SERVER}version/`;
+    const urlVersion = `${process.env.VITE_API_VERSION_SERVER}version/deployment/`;
     const res = await fetch(urlVersion);
     APP_VERSION = await res.text();      
   } catch (error) {
