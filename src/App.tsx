@@ -16,9 +16,9 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Clean PWA Cache</h1>
       <p className="read-the-docs">
-        Cleaning cache of PWA application
+        Tech stack: TypeScript, reactJs, service worker, vite, vercel, pwa
       </p>
       <div className="card">
         <Version />
